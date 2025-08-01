@@ -1,0 +1,21 @@
+# Default configuration for training and evaluation of the PPO chess agent.
+# Adjust these values via the CLI or by editing this file directly.
+seeds: [0, 1, 2]
+total_timesteps: 1000000  # total number of environment steps to train
+n_envs: 1                # number of parallel environments
+gamma: 0.99              # discount factor for return
+gae_lambda: 0.95         # GAE (Generalized Advantage Estimation) parameter
+vf_coef: 0.5             # value function coefficient in PPO loss
+ent_coef: 0.01           # entropy coefficient to encourage exploration
+lr: 0.0003               # learning rate for the optimizer
+board_fen: null          # starting position in FEN (null for standard chess)
+stockfish_path: /usr/local/bin/stockfish  # path to the Stockfish binary for evaluation
+stockfish_depth: 2       # search depth when evaluating against Stockfish
+eval_games: 20           # number of games to play during evaluation
+reward:
+  win: 1.0               # reward for winning a game
+  draw: 0.0              # reward for drawing a game
+  loss: -1.0             # reward for losing a game
+  material: 0.01         # coefficient for material difference shaping
+  checkmate_bonus: 0.0   # additional bonus for delivering checkmate
+illegal_move_penalty: -1.0  # penalty applied if the agent attempts an illegal move
